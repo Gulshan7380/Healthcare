@@ -1,24 +1,30 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { Icon } from '../../utils/icons';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  ImageSourcePropType,
+} from 'react-native';
 import { Theme } from '../../constants/theme';
 
 interface QuickActionButtonProps {
-  icon: string;
+  image: ImageSourcePropType | undefined;
   label: string;
   onPress?: () => void;
 }
 
 export const QuickActionButton: React.FC<QuickActionButtonProps> = ({
-  icon,
   label,
   onPress,
+  image,
 }) => {
   return (
     <TouchableOpacity style={styles.actionButton} onPress={onPress}>
       <Text style={styles.actionLabel}>{label}</Text>
       <View style={styles.actionIconContainer}>
-        <Icon name={icon} size={24} color={Theme.colors.primary} />
+        <Image source={image} style={styles.imageStyle} resizeMode="cover" />
       </View>
     </TouchableOpacity>
   );
@@ -31,7 +37,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     backgroundColor: Theme.colors.white,
     borderRadius: Theme.borderRadius.md,
-    padding: Theme.spacing.md,
+    paddingVertical: Theme.spacing.smm,
+    paddingHorizontal: Theme.spacing.md,
     borderWidth: 1,
     borderColor: Theme.colors.border,
     width: '48%',
@@ -44,5 +51,9 @@ const styles = StyleSheet.create({
     ...Theme.typography.h3,
     color: Theme.colors.textSecondary,
     textAlign: 'center',
+  },
+  imageStyle: {
+    width: 28,
+    height: 28,
   },
 });

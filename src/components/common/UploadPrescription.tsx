@@ -6,9 +6,9 @@ import {
   TouchableOpacity,
   Alert,
   ActivityIndicator,
+  Image,
 } from 'react-native';
 import Animated, { FadeInUp } from 'react-native-reanimated';
-import { Icon } from '../../utils/icons';
 import { Theme } from '../../constants/theme';
 import { useFileUpload } from './FileUpload';
 
@@ -93,10 +93,10 @@ const UploadPrescription: React.FC<UploadPrescriptionProps> = ({
               onPress={handleUploadLink}
               style={styles.uploadButton}
             >
-              <Icon
-                name="insert-link"
-                size={32}
-                color={Theme.colors.textSecondary}
+              <Image
+                source={require('../../assets/uploadlink.png')}
+                style={styles.file}
+                resizeMode="cover"
               />
               <Text style={[styles.uploadButtonLabel]}>Upload Link</Text>
             </TouchableOpacity>
@@ -105,10 +105,10 @@ const UploadPrescription: React.FC<UploadPrescriptionProps> = ({
               onPress={handleUploadFile}
               style={styles.uploadButton}
             >
-              <Icon
-                name="upload-file"
-                size={32}
-                color={Theme.colors.textSecondary}
+              <Image
+                source={require('../../assets/uploadfile.png')}
+                style={styles.file}
+                resizeMode="cover"
               />
               <Text style={[styles.uploadButtonLabel]}>Upload File</Text>
             </TouchableOpacity>
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     color: Theme.colors.text,
     marginBottom: Theme.spacing.sm,
-    marginTop: Theme.spacing.md,
+    paddingTop: Theme.spacing.sm,
     textAlign: 'center',
   },
   sectionDescription: {
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
   uploadContainer: {
     backgroundColor: Theme.colors.white,
     borderRadius: Theme.borderRadius.xxl,
-    borderWidth: 0.5,
+    borderWidth: 0.6,
     borderColor: Theme.colors.black,
     padding: Theme.spacing.lg,
   },
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: Theme.spacing.lg,
+    paddingVertical: Theme.spacing.md,
   },
   uploadButtonLabel: {
     ...Theme.typography.h3,
@@ -169,6 +169,10 @@ const styles = StyleSheet.create({
     ...Theme.typography.body,
     color: Theme.colors.textSecondary,
     marginTop: Theme.spacing.md,
+  },
+  file: {
+    width: 50,
+    height: 50,
   },
 });
 

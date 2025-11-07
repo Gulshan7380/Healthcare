@@ -64,16 +64,18 @@ const PharmacyCard: React.FC<PharmacyCardProps> = ({ pharmacy, index }) => {
             <Image
               source={pharmacy.image}
               style={styles.pharmacyImage}
-              resizeMode="cover"
+              resizeMode="stretch"
             />
           </View>
-          <Text style={styles.pharmacyName}>{pharmacy.name}</Text>
-          <Text style={styles.pharmacyDistance}>{pharmacy.distance}</Text>
-          <View style={styles.ratingContainer}>
-            <Icon name="star" size={14} color={Theme.colors.warning} />
-            <Text style={styles.ratingText}>
-              {pharmacy.rating} ({pharmacy.reviews} reviews)
-            </Text>
+          <View style={styles.pharmacyInfo}>
+            <Text style={styles.pharmacyName}>{pharmacy.name}</Text>
+            <Text style={styles.pharmacyDistance}>{pharmacy.distance}</Text>
+            <View style={styles.ratingContainer}>
+              <Icon name="star" size={14} color={Theme.colors.warning} />
+              <Text style={styles.ratingText}>
+                {pharmacy.rating} ({pharmacy.reviews} reviews)
+              </Text>
+            </View>
           </View>
         </Animated.View>
       </TouchableOpacity>
@@ -89,20 +91,22 @@ const styles = StyleSheet.create({
   pharmacyCard: {
     backgroundColor: Theme.colors.white,
     borderRadius: Theme.borderRadius.xxl,
-    padding: Theme.spacing.md,
-    borderWidth: 0.5,
+    borderWidth: 0.7,
     borderColor: Theme.colors.black,
   },
   pharmacyImageContainer: {
     width: '100%',
-    height: 120,
+    height: 110,
     marginBottom: Theme.spacing.sm,
-    borderRadius: Theme.borderRadius.md,
     overflow: 'hidden',
   },
   pharmacyImage: {
     width: '100%',
     height: '100%',
+  },
+  pharmacyInfo: {
+    paddingHorizontal: Theme.spacing.sm,
+    paddingBottom: Theme.spacing.md,
   },
   pharmacyName: {
     ...Theme.typography.bodyBold,

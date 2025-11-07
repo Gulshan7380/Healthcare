@@ -61,12 +61,24 @@ export const NearbyPharmacyTab: React.FC = () => {
           entering={FadeInUp.duration(600).delay(100)}
         >
           <View style={styles.quickActionsRow}>
-            <QuickActionButton icon="help-outline" label="Questions" />
-            <QuickActionButton icon="notifications-none" label="Reminders" />
+            <QuickActionButton
+              image={require('../../assets/Question.png')}
+              label="Questions"
+            />
+            <QuickActionButton
+              image={require('../../assets/Reminder.png')}
+              label="Reminders"
+            />
           </View>
           <View style={styles.quickActionsRow}>
-            <QuickActionButton icon="chat-bubble-outline" label="Messages" />
-            <QuickActionButton icon="calendar-today" label="Calendar" />
+            <QuickActionButton
+              image={require('../../assets/Message.png')}
+              label="Messages"
+            />
+            <QuickActionButton
+              image={require('../../assets/Calendar.png')}
+              label="Calendar"
+            />
           </View>
         </Animated.View>
 
