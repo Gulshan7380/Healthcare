@@ -7,17 +7,19 @@ import {
   TouchableOpacity,
   Image,
   StatusBar,
+  Alert,
 } from 'react-native';
 import Animated, {
   FadeInUp,
   FadeInLeft,
   FadeInRight,
 } from 'react-native-reanimated';
-import { useFocusEffect } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { Icon } from '../../utils/icons';
 import { QuickActionButton } from '../../components/common/QuickActionButton';
 import { Theme } from '../../constants/theme';
 import { Button } from '../../components/common/Button';
+import { authService } from '../../services/AuthService';
 
 export const NearbyPharmacyTab: React.FC = () => {
   const [animationKey, setAnimationKey] = React.useState(0);
@@ -28,6 +30,21 @@ export const NearbyPharmacyTab: React.FC = () => {
     }, []),
   );
 
+  const navigation = useNavigation();
+
+  const handleLogout = () => {
+    Alert.alert('Logout', 'Are you sure you want to logout?', [
+      { text: 'Cancel', style: 'cancel' },
+      {
+        text: 'Logout',
+        onPress: async () => {
+          await authService.logout();
+          navigation.navigate('Login');
+        },
+      },
+    ]);
+  };
+
   return (
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor={Theme.colors.white} />
@@ -36,7 +53,7 @@ export const NearbyPharmacyTab: React.FC = () => {
         entering={FadeInUp.duration(600)}
         style={styles.header}
       >
-        <TouchableOpacity style={styles.menuButton}>
+        <TouchableOpacity style={styles.menuButton} onPress={handleLogout}>
           <Icon name="menu" size={30} color={Theme.colors.black} />
         </TouchableOpacity>
 

@@ -2,6 +2,7 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
   onAuthStateChanged as firebaseOnAuthStateChanged,
 } from '@react-native-firebase/auth';
 
@@ -69,6 +70,19 @@ class AuthService {
 
   getCurrentUser() {
     return this.auth.currentUser;
+  }
+
+  /**
+   * Logout current user
+   */
+  async logout(): Promise<void> {
+    try {
+      await signOut(this.auth);
+      console.log('User logged out successfully');
+    } catch (error: any) {
+      console.error('Logout error:', error);
+      throw new Error('Failed to logout. Please try again.');
+    }
   }
 
   private handleAuthError(error: any): Error {
