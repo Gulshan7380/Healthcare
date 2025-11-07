@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "782241612289",
+    "project_id": "fir-auth-40b81",
+    "storage_bucket": "fir-auth-40b81.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:782241612289:android:20b2053b84695c7fdb7600",
+        "android_client_info": {
+          "package_name": "com.healthcare"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdGBl3CBlkHZ2Tgghlq9R958EgddOaGms"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
