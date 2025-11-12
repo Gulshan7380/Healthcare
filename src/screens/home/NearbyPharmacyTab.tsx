@@ -39,7 +39,7 @@ export const NearbyPharmacyTab: React.FC = () => {
         text: 'Logout',
         onPress: async () => {
           await authService.logout();
-          navigation.navigate('Login');
+          navigation.navigate('Login' as never);
         },
       },
     ]);
